@@ -36,13 +36,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ✅ Updated require paths
-const adsRoutes = require('../routes/ads');
-const userRoutes = require('../routes/users');
-const messageRoutes = require('../routes/messages');
-const orderRoutes = require('../routes/orders');
-const reviewRoutes = require('../routes/reviews');
-const adminRoutes = require('../routes/admin');
+// ✅ Updated paths (no "../" anymore)
+const adsRoutes = require('./routes/ads');
+const userRoutes = require('./routes/users');
+const messageRoutes = require('./routes/messages');
+const orderRoutes = require('./routes/orders');
+const reviewRoutes = require('./routes/reviews');
+const adminRoutes = require('./routes/admin');
 
 app.use('/api/ads', adsRoutes);
 app.use('/api/users', userRoutes);
