@@ -19,12 +19,14 @@ const userRoutes = require('./routes/users');
 const messageRoutes = require('./routes/messages');
 const orderRoutes = require('./routes/orders');
 const reviewRoutes = require('./routes/reviews');
+const adminRoutes = require('./routes/admin'); // ✅ ADDED this line
 
 app.use('/api/ads', adsRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/admin', adminRoutes); // ✅ ADDED this line
 
 // Health check route
 app.get('/', (req, res) => {
