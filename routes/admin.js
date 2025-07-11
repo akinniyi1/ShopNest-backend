@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const { isAdmin } = require('../middleware/auth');
-const { readJson } = require('../utils/fileManager');
+const { isAdmin } = require('../utils/middleware/auth'); // ✅ fixed path
+const { readJson } = require('../utils/middleware/fileManager'); // ✅ fixed path
 const router = express.Router();
 
 const dataDir = '/mnt/data';
