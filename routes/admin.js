@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const { isAdmin } = require('../utils/middleware/auth'); // ✅ fixed path
-const { readJson } = require('../utils/middleware/fileManager'); // ✅ fixed path
+const { isAdmin } = require('../utils/middleware/auth'); // ✅ correct
+const { readJson } = require('../utils/middleware'); // ✅ FIXED: fileManager.js is actually named middleware.js
 const router = express.Router();
 
 const dataDir = '/mnt/data';
