@@ -22,6 +22,9 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const ad = req.body;
+    console.log("📩 New ad received:", ad); // Debug log
+
+    // Validate required fields
     if (!ad.userEmail || !ad.title || !ad.price || !ad.category) {
       return res.status(400).json({ error: 'Missing required ad fields' });
     }
@@ -41,15 +44,26 @@ router.post('/', async (req, res) => {
 
     const newAd = {
       id: uuidv4(),
-      ...ad,
+      userEmail: ad.userEmail,
+      title: ad.title,
+      description: ad.description || '',
+      price: ad.price,
+      currency: ad.currency || 'NGN',
+      category: ad.category,
+      subOptions: ad.subOptions || {},
+      location: ad.location || '',
+      deliveryTime: ad.deliveryTime || '',
+      images: ad.images || [],
       createdAt: new Date().toISOString(),
       status: 'active'
     };
 
     ads.push(newAd);
     await fs.writeJson(adsFile, ads, { spaces: 2 });
-    res.json({ success: true, ad: newAd });
+
+    res.status(201).json({ success: true, ad: newAd });
   } catch (err) {
+    console.error("❌ Failed to post ad:", err.message);
     res.status(500).json({ error: 'Failed to post ad', details: err.message });
   }
 });
